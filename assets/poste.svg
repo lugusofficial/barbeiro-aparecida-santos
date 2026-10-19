@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Faixas do poste de barbeiro, desenhadas a mao: vermelho, branco, preto, branco a 45 graus, ladrilho sem emenda. -->
+  <rect width="48" height="48" fill="#ffffff"/>
+  <g fill="#c8202f">
+    <path d="M0 0H8L-40 48H-48Z"/><path d="M24 0H32L-16 48H-24Z"/><path d="M48 0H56L8 48H0Z"/><path d="M72 0H80L32 48H24Z"/>
+  </g>
+  <g fill="#121212">
+    <path d="M12 0H20L-28 48H-36Z"/><path d="M36 0H44L-4 48H-12Z"/><path d="M60 0H68L20 48H12Z"/><path d="M84 0H92L44 48H36Z"/>
+  </g>
+</svg>

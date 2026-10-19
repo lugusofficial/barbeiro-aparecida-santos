@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Poste de barbeiro: capa preta, cilindro branco com faixas vermelhas. -->
+  <defs><clipPath id="cilindro"><rect x="10" y="7" width="12" height="18" rx="2"/></clipPath></defs>
+  <rect x="10" y="7" width="12" height="18" rx="2" fill="#ffffff"/>
+  <g clip-path="url(#cilindro)" fill="#c8202f"><path d="M10 9L22 3V7L10 13Z"/><path d="M10 17L22 11V15L10 21Z"/><path d="M10 25L22 19V23L10 29Z"/></g>
+  <rect x="8" y="3" width="16" height="4" rx="2" fill="#121212"/>
+  <rect x="8" y="25" width="16" height="4" rx="2" fill="#121212"/>
+</svg>

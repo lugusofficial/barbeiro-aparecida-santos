@@ -1,0 +1,63 @@
+/* Tokens escritos a mao a partir do DESIGN.md do projeto: cadeira marcada.
+   Muito branco, o preto do couro da cadeira nos titulos e no rodape, e o
+   vermelho do poste de barbeiro so no botao principal e nos destaques
+   (branco sobre vermelho 5,6:1). */
+:root {
+  --branco: #ffffff;
+  --preto: #121212;
+  --vermelho: #c8202f;
+  --vermelho-escuro: #9e1824;
+  --nevoa: #f4f3f1;
+  --cinza: #55524e;
+  --linha: #e2dfda;
+
+  --color-bg: var(--branco);
+  --color-text: var(--preto);
+  --color-muted: var(--cinza);
+  --color-surface: var(--nevoa);
+  --color-rule: var(--linha);
+  --color-accent: var(--vermelho);
+  --color-on-accent: var(--branco);
+  --color-focus: var(--preto);
+
+  --font-display: "Bebas Neue", "Arial Narrow", Impact, system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --weight-display: 400;
+  --weight-display-strong: 400;
+  --weight-body: 400;
+  --weight-body-medium: 600;
+
+  --step--1: clamp(0.88rem, 0.85rem + 0.1vw, 0.94rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
+  --step-2: clamp(1.7rem, 1.45rem + 1vw, 2.3rem);
+  --step-3: clamp(2.4rem, 1.9rem + 2vw, 3.6rem);
+  --step-4: clamp(3rem, 2.2rem + 3.2vw, 5rem);
+  --step-5: clamp(3.4rem, 2.2rem + 5.4vw, 7.2rem);
+  --leading-body: 1.6;
+  --leading-tight: 1;
+  --measure: 60ch;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --gutter: 1.25rem;
+  --container: 72rem;
+  --section-gap: clamp(5rem, 3.5rem + 4vw, 7rem);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Faixa do poste de barbeiro: altura do divisor e diametro do carimbo. */
+  --poste: 0.6rem;
+  --carimbo: 8.5rem;
+  --foto-eduardo: clamp(13rem, 9rem + 14vw, 21rem);
+}

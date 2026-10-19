@@ -1,0 +1,164 @@
+/* Camada do site: cadeira marcada. Muito branco, o preto do couro nos titulos
+   e no rodape, o vermelho do poste so no botao principal e nos destaques, e as
+   faixas diagonais do poste (assets/poste.svg, desenhado a mao) como divisor
+   fino e no carimbo de horario. So tokens. */
+
+body { overflow-x: hidden; }
+h1, h2, h3 { color: var(--preto); letter-spacing: 0.01em; text-transform: uppercase; }
+.lead { color: var(--preto); }
+
+/* Rotulo curto com o tracinho vermelho na frente */
+.kicker { display: inline-flex; align-items: center; gap: var(--space-3); font-weight: var(--weight-body-medium); font-size: var(--step--1); letter-spacing: 0.14em; text-transform: uppercase; color: var(--vermelho); }
+.kicker::before { content: ""; width: 1.5rem; height: 3px; border-radius: var(--radius-pill); background: currentColor; flex: none; }
+.cabeca { display: grid; gap: var(--space-3); margin-bottom: var(--space-7); justify-items: start; }
+.fonte { margin-top: var(--space-5); font-size: var(--step--1); color: var(--cinza); }
+
+/* Faixa do poste: divisor fino e anel do carimbo */
+.poste { height: var(--poste); background: var(--branco) url("../assets/poste.svg") repeat-x left center / auto 200%; }
+
+/* Glifos de marca (WhatsApp, Instagram) sao preenchidos, nao contornados */
+.icon--marca { fill: currentColor; stroke: none; width: 1.3em; height: 1.3em; }
+
+/* Botoes */
+.btn { transition: background-color 200ms ease, color 200ms ease, transform 200ms ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn--primary:hover { opacity: 1; background: var(--vermelho-escuro); }
+.btn--grande { min-height: 3.5rem; padding-inline: var(--space-6); font-size: var(--step-0); }
+.btn--topo { min-height: 2.75rem; padding: var(--space-2) var(--space-5); background: var(--preto); color: var(--branco); }
+.btn--topo:hover { background: var(--vermelho); }
+.link-ig, .link-seta { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; font-weight: var(--weight-body-medium); text-decoration: none; }
+.link-ig:hover, .link-seta:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+.link-seta { color: var(--vermelho); }
+
+/* Cabecalho */
+.site-header { position: sticky; top: 0; z-index: 30; background: var(--branco); transition: background-color 250ms ease; }
+.site-header.is-sobre { background: transparent; }
+.site-header.is-sobre .brand, .site-header.is-sobre .nav-toggle, .site-header.is-sobre .site-nav a:not(.btn) { color: var(--branco); }
+.site-header.is-sobre .btn--topo { background: var(--branco); color: var(--preto); }
+.site-header.is-sobre .btn--topo:hover { background: var(--vermelho); color: var(--branco); }
+.site-header.is-aberto { background: var(--branco); }
+.site-header.is-aberto .brand, .site-header.is-aberto .nav-toggle, .site-header.is-aberto .site-nav a:not(.btn) { color: var(--preto); }
+.site-header.is-aberto .btn--topo { background: var(--preto); color: var(--branco); }
+.brand { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--step-2); letter-spacing: 0.04em; text-transform: uppercase; color: var(--preto); min-height: 44px; }
+.brand__marca { width: 2rem; height: 2rem; border-radius: var(--radius-sm); flex: none; }
+.nav-toggle { color: var(--preto); min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+.site-nav a:not(.btn) { font-weight: var(--weight-body-medium); color: var(--preto); }
+
+/* Heroi de video. Sem o video, o fundo e o preto, para o texto branco seguir legivel. */
+.cena { position: relative; min-height: 100svh; margin-top: calc(-1 * var(--altura-header, 4.5rem)); display: grid; align-items: end; color: var(--branco); overflow: hidden; background: var(--preto); }
+.cena__midia, .cena__midia video, .cena__midia img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cena__midia img { border-radius: inherit; }
+.cena__midia::after { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--preto) 50%, transparent); }
+.cena video::-webkit-media-controls-start-playback-button { display: none; }
+.cena__texto { position: relative; z-index: 1; display: grid; gap: var(--space-4); justify-items: start; padding-block: var(--space-9) calc(var(--space-9) + var(--space-5)); }
+.cena .kicker, .cena h1, .cena .link-ig { color: var(--branco); }
+.cena h1 { font-size: var(--step-5); max-width: 6.6em; }
+.cena p { font-size: var(--step-1); max-width: 30ch; }
+.cena p.kicker { font-size: var(--step--1); max-width: none; }
+.cena .cluster { margin-top: var(--space-3); gap: var(--space-4) var(--space-6); }
+.cena__seta { position: absolute; z-index: 1; left: var(--gutter); bottom: var(--space-5); width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: var(--radius-pill); color: var(--branco); background: var(--vermelho); text-decoration: none; animation: desce 2.6s ease-in-out infinite; }
+@keyframes desce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+@media (min-width: 48em) { .cena__seta { display: none; } .cena__texto { padding-bottom: var(--space-9); } }
+
+/* Quem corta: foto redonda grande, texto em primeira pessoa */
+.quem { display: grid; gap: var(--space-7); align-items: center; justify-items: start; }
+@media (min-width: 52em) { .quem { grid-template-columns: auto 1fr; gap: var(--space-9); } }
+.quem__foto img { width: var(--foto-eduardo); aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-pill); }
+.quem__texto { display: grid; gap: var(--space-4); justify-items: start; }
+.quem__texto h2 { font-size: var(--step-4); }
+.quem__texto .link-ig { color: var(--preto); font-size: var(--step-1); }
+.quem__texto .link-ig .icon--marca { color: var(--vermelho); }
+
+/* Servicos: lista de linhas, sem caixas */
+.servicos { display: grid; }
+.servico { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-5); align-items: center; padding-block: var(--space-5); border-bottom: 1px solid var(--linha); max-width: none; }
+.servico h3 { font-size: var(--step-3); grid-column: 1 / -1; }
+.servico__info { display: flex; align-items: baseline; gap: var(--space-4); color: var(--cinza); }
+.servico__info strong { font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--step-2); color: var(--preto); line-height: 1; }
+.servico__marcar { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; padding-inline: var(--space-4); border-radius: var(--radius-pill); font-weight: var(--weight-body-medium); color: var(--vermelho); text-decoration: none; transition: background-color 200ms ease, color 200ms ease; }
+.servico__marcar:hover { background: var(--vermelho); color: var(--branco); }
+.servico__marcar .icon { transition: transform 200ms ease; }
+.servico__marcar:hover .icon { transform: translateX(4px); }
+@media (min-width: 48em) {
+  .servico { grid-template-columns: 1fr auto auto; gap: var(--space-6); }
+  .servico h3 { grid-column: auto; }
+}
+.extras { margin-top: var(--space-6); color: var(--cinza); }
+
+/* Galeria: quatro fotos em mosaico, a primeira maior */
+.galeria { display: grid; gap: var(--space-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.galeria img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
+.galeria img:first-child, .galeria img:nth-child(4) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+@media (min-width: 56em) {
+  .galeria { grid-template-columns: 3fr 2fr 2fr; grid-template-rows: auto auto; }
+  .galeria img:first-child { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: auto; }
+  .galeria img:nth-child(4) { grid-column: 2 / -1; aspect-ratio: 16 / 7; }
+}
+
+/* Agendar: o unico painel cheio da pagina */
+.agendar { display: grid; gap: var(--space-6); }
+.agendar__cabeca { display: grid; gap: var(--space-3); justify-items: start; }
+.escolha { border: 0; padding: 0; min-width: 0; display: grid; gap: var(--space-3); }
+.escolha legend { padding: 0; margin-bottom: var(--space-3); font-weight: var(--weight-body-medium); font-size: var(--step--1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza); }
+.opcoes { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.opcao { position: relative; max-width: none; }
+.opcao input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.opcao span { display: inline-flex; align-items: center; justify-content: center; min-width: 3.25rem; min-height: 2.75rem; padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); background: var(--branco); color: var(--preto); font-weight: var(--weight-body-medium); transition: background-color 200ms ease, color 200ms ease; }
+.opcao:hover span { background: var(--linha); }
+.opcao input:checked + span { background: var(--preto); color: var(--branco); }
+.opcao input:focus-visible + span { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.opcao--fechado span { background: transparent; color: var(--cinza); text-decoration: line-through; }
+.opcao--fechado:hover span { background: transparent; }
+.opcao--fechado input { cursor: not-allowed; }
+.escolha__nota { font-size: var(--step--1); color: var(--cinza); }
+.agendar__fim { display: grid; gap: var(--space-5); justify-items: start; padding-top: var(--space-5); }
+.agendar__previa { font-size: var(--step-1); font-weight: var(--weight-body-medium); max-width: 40ch; }
+.agendar__previa::before { content: "\201C"; color: var(--vermelho); }
+.agendar__previa::after { content: "\201D"; color: var(--vermelho); }
+@media (min-width: 60em) {
+  .agendar { grid-template-columns: 5fr 7fr; column-gap: var(--space-9); }
+  .agendar__cabeca { grid-row: 1 / span 4; align-content: start; }
+  .agendar__cabeca h2 { font-size: var(--step-4); }
+}
+
+/* Onde: foto com o carimbo de horario, endereco e horarios */
+.onde { display: grid; gap: var(--space-8); align-items: center; }
+@media (min-width: 52em) { .onde { grid-template-columns: 6fr 5fr; } }
+.onde__foto { position: relative; margin-bottom: var(--space-6); }
+.onde__foto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
+.onde__texto { display: grid; gap: var(--space-4); justify-items: start; }
+.endereco { font-size: var(--step-1); font-weight: var(--weight-body-medium); }
+.horarios { display: grid; width: 100%; max-width: 28rem; }
+.horarios div { display: flex; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-3); border-bottom: 1px solid var(--linha); }
+.horarios dd { margin: 0; font-weight: var(--weight-body-medium); }
+
+/* Carimbo: circulo com anel de faixas do poste e miolo branco */
+.carimbo { position: absolute; right: var(--space-5); bottom: calc(-1 * var(--space-7)); width: var(--carimbo); aspect-ratio: 1; display: grid; place-items: center; border-radius: var(--radius-pill); background: url("../assets/poste.svg") repeat center / 1.5rem; }
+.carimbo span { display: grid; place-content: center; text-align: center; width: calc(100% - 1.2rem); aspect-ratio: 1; border-radius: var(--radius-pill); background: var(--branco); font-size: var(--step--1); line-height: 1.2; color: var(--cinza); }
+.carimbo strong { font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--step-1); line-height: 1; color: var(--preto); text-transform: uppercase; }
+
+/* Botao flutuante de WhatsApp: so no celular, depois da primeira dobra */
+.barra-wa { position: fixed; z-index: 25; right: var(--gutter); bottom: var(--space-5); width: 3.5rem; height: 3.5rem; display: grid; place-items: center; border-radius: var(--radius-pill); background: var(--vermelho); color: var(--branco); opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity 300ms ease, transform 300ms ease, visibility 0s 300ms; }
+.barra-wa .icon--marca { width: 1.7rem; height: 1.7rem; }
+.barra-wa.is-on { opacity: 1; visibility: visible; transform: none; transition: opacity 300ms ease, transform 300ms ease; }
+@media (min-width: 48em) { .barra-wa { display: none; } }
+
+/* Rodape no preto, aberto pela faixa do poste */
+.site-footer { position: relative; background: var(--preto); color: var(--branco); margin-top: var(--section-gap); padding-block: 0 var(--space-6); }
+.site-footer > .container { padding-top: var(--space-8); }
+.site-footer .brand { color: var(--branco); }
+.site-footer :focus-visible { outline-color: var(--branco); }
+.rodape { display: grid; gap: var(--space-6); align-items: start; }
+@media (min-width: 52em) { .rodape { grid-template-columns: 4fr 4fr 3fr; } }
+.rodape__contatos { display: grid; gap: var(--space-2); }
+.rodape__contatos a { display: inline-flex; align-items: center; gap: var(--space-3); min-height: 44px; font-size: var(--step-1); }
+.rodape__fim { margin-top: var(--space-7); }
+
+/* Reveal: so com script e so com movimento */
+.js-reveal [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 800ms ease, transform 800ms cubic-bezier(.2,.8,.2,1); }
+.js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
+.js-reveal [data-reveal-filhos] > * { opacity: 0; transform: translateY(22px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1); }
+.js-reveal [data-reveal-filhos].is-visible > * { opacity: 1; transform: none; }
+.js-reveal [data-reveal-filhos].is-visible > :nth-child(2) { transition-delay: 110ms; }
+.js-reveal [data-reveal-filhos].is-visible > :nth-child(3) { transition-delay: 220ms; }
+.js-reveal [data-reveal-filhos].is-visible > :nth-child(4) { transition-delay: 330ms; }
